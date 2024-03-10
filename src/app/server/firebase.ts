@@ -10,17 +10,17 @@ import {
 } from "firebase/firestore";
 import { db } from "../services/init";
 
-export const addNew = async (e: any) => {
-  e.preventDefault();
-  const todos = e.target.todos.value;
-  const times = e.target.times.value;
+export const addNew = async (formdata: FormData) => {
+
+  const todos = formdata.get("todos");
+  const times = formdata.get("times");
   await addDoc(collection(db, "todos"), {
     todos: todos,
     times: times,
     timestamp: serverTimestamp(),
     done: false,
   });
-  e.target.reset();
+
 };
 export const Delete = async (id: any) => {
   await deleteDoc(doc(db, "todos", id));
@@ -34,8 +34,8 @@ export const completed = async (item: any) => {
     times: item.times,
   });
 };
-export const Edit = async (e: any, id: string, {date , task} : any) => {
-  e.preventDefault();
+export const Edit = async ( id: string, {date , task} : any) => {
+
   console.log(id);
   try {
     const docRef = doc(db, "todos", id);

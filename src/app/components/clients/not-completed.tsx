@@ -1,3 +1,4 @@
+
 import {
   collection,
   deleteDoc,
@@ -42,14 +43,14 @@ export default function notCompleted() {
           <div className="custom-loader"></div>
         </div>
       ) : (
-        <div className="border">
+        <div className="border border-b-0 backdrop-blur-xl">
           {data?.map((item: any) => (
             <div className="p-2 flex justify-between flex-col md:flex-row border" key={item.id}>
               <div>
-                <h1 className="text-2xl font-bold">{item.todos}</h1>
-                <p className="text-md">{item.times}</p>
+                <h1 className="text-2xl font-bold text-white">{item.todos}</h1>
+                <p className="text-md text-white">{item.times}</p>
               </div>
-              <div className="flex gap-6 md:gap-8 mr-2 py-2">
+              <div className="flex gap-2 md:gap-8 mr-2 py-2">
                 <button
                   className=" w-6 md:w-8 aspect-square flex items-center"
                   onClick={() => Delete(item.id)}
